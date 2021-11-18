@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Contact template</h1>
+
+    <p>this is a template</p>
+
+    <p>
+    name: {{ my_name}}
+    </p>
+    <p>
+    phone: {{phone}}
+    </p>
+    <ul>
+    {% for item in my_list %}
+        {% load util %}
+        {% if item|get_type != 'int' %}
+            <li> this is not a integer its type is "{{item|get_type}}"  </li>
+        {% elif item < 200 %}
+            <li>{{forloop.counter}} - {{item|add:200}} </li>
+        {% else %}
+            <li>{{forloop.counter}} - {{item}}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endblock content %}
